@@ -1,20 +1,26 @@
-import React from 'react';
+import { Component } from 'react';
+import ImageGalleryItem from 'components/ImageGalleryItem/ImageGalleryItem';
+import { GalleryItemList } from './ImageGallery.Styled';
 
-import {
-  GalleryItem,
-  ImageGalleryItem,
-  ImageGalleryItemImage,
-} from './ImageGallery.Styled';
-const ImageGallery = ({ articles }) => {
-  return (
-    <GalleryItem>
-      {articles.map(({ id, largeImageURL }) => (
-        <ImageGalleryItem key={id}>
-          <ImageGalleryItemImage src={largeImageURL} alt="" />
-        </ImageGalleryItem>
-      ))}
-    </GalleryItem>
-  );
-};
+class ImageGallery extends Component {
+  state = {
+    hits: null,
+    error: null,
+    total: 0,
+    page: 1,
+    status: 'idle',
+  };
+
+  render() {
+    const { articles } = this.props;
+    return (
+      <GalleryItemList>
+        {articles.map(articles => (
+          <ImageGalleryItem key={articles.id} articles={articles} />
+        ))}
+      </GalleryItemList>
+    );
+  }
+}
 
 export default ImageGallery;

@@ -3,15 +3,14 @@ import axios from 'axios';
 import ImageGallery from './ImageGallery/ImageGallery';
 import Searchbar from './Searchbar/Searchbar';
 import Button from './Button/Button';
-import Modal from './Modal/Modal';
-import ButtonModal from './Modal/ButtonModal';
+import { AppWrapper } from './App.Styled';
+
 class App extends Component {
   state = {
     articles: [],
     isLoading: false,
     name: '',
     error: null,
-    modalShow: false,
   };
   newSearch = nameSearch => {
     this.setState({ name: nameSearch.name });
@@ -39,30 +38,15 @@ class App extends Component {
       }
     }
   }
-  toggleModal = () => {
-    this.setState(state => ({
-      modalShow: !state.modalShow,
-    }));
-  };
+
   render() {
     return (
-      <div
-        style={{
-          height: '100vh',
-          position: 'relative',
-          justifyContent: 'center',
-          alignItems: 'center',
-          fontSize: 40,
-          color: '#010101',
-        }}
-      >
-        {this.state.modalShow && <Modal />}
-        {}
+      <AppWrapper>
         {<Searchbar onSubmit={this.newSearch} />}
         {this.state.isLoading && <p>Loading...</p>}
         {<ImageGallery articles={this.state.articles} />}
         {<Button />}
-      </div>
+      </AppWrapper>
     );
   }
 }

@@ -36,7 +36,7 @@ export const SearchFormButton = styled.button`
     width: 48px;
     height: 48px;
     border: 0;
-    background-image: url('https://image.flaticon.com/icons/svg/149/149852.svg');
+    background-image: url('https://www.svgrepo.com/show/508172/search-alt.svg');
     background-size: 40%;
     background-repeat: no-repeat;
     background-position: center;
@@ -72,6 +72,7 @@ export const SearchFormInput = styled.input`
     outline: none;
     padding-left: 4px;
     padding-right: 4px;
+
     ::placeholder {
       font: inherit;
       font-size: 18px;
