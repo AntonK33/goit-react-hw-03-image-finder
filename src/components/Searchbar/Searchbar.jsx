@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { Component } from 'react';
 import {
   SearchForm,
@@ -11,19 +12,20 @@ class Searchbar extends Component {
   state = {
     name: '',
   };
+
   searchName = e => {
-    this.setState({ name: e.target.value });
-    //console.log(this.state.name);
+    this.setState({ name: e.target.value.toLowerCase() });
   };
+
   submitForm = e => {
     e.preventDefault();
     const nameSearch = {
       name: this.state.name,
     };
     this.props.onSubmit(nameSearch);
-    //console.log(nameSearch);
     this.restart();
   };
+
   restart = () => {
     setTimeout(() => {
       this.setState({ name: '' });
@@ -40,9 +42,11 @@ class Searchbar extends Component {
           <SearchFormInput
             onChange={this.searchName}
             type="text"
+            name="input"
             autocomplete="off"
             value={this.state.name}
             autoFocus
+            autoComplete="off"
             placeholder="Search images and photos"
           />
         </SearchForm>
@@ -52,3 +56,7 @@ class Searchbar extends Component {
 }
 
 export default Searchbar;
+
+Searchbar.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+};

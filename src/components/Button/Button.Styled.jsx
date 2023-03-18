@@ -27,3 +27,8 @@ export const ButtonStyle = styled.button`
     }
   }
 `;
+export const ButtonWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  padding: 20px 0;
+`;
