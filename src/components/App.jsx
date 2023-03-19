@@ -7,8 +7,8 @@ class App extends Component {
   state = {
     name: '',
   };
-  newSearch = nameSearch => {
-    this.setState({ name: nameSearch.name });
+  newSearch = name => {
+    this.setState({ name });
   };
 
   render() {

@@ -14,23 +14,22 @@ class Searchbar extends Component {
   };
 
   searchName = e => {
-    this.setState({ name: e.target.value.toLowerCase() });
+    this.setState({ name: e.currentTarget.value.toLowerCase() });
   };
 
   submitForm = e => {
     e.preventDefault();
-    const nameSearch = {
-      name: this.state.name,
-    };
-    this.props.onSubmit(nameSearch);
-    this.restart();
+    if (this.state.name.trim() === '') {
+      alert('Type something in search input');
+      return;
+    }
+    // const nameSearch = {
+    //   name: this.state.name,
+    // };
+    this.props.onSubmit(this.state.name);
+    this.setState({ name: '' });
   };
 
-  restart = () => {
-    setTimeout(() => {
-      this.setState({ name: '' });
-    }, 500);
-  };
   render() {
     return (
       <SearchbarH>
